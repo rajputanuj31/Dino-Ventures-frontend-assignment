@@ -12,10 +12,10 @@ export interface Video {
   mediaType: MediaType;
   thumbnailUrl: string;
   slug: string;
+  durationSeconds: number;
 }
 
 export interface CategoryWithVideos {
   category: Category;
   contents: Video[];
 }
-

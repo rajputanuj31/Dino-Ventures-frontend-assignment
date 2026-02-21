@@ -10,18 +10,16 @@ interface VideoFeedProps {
 export function VideoFeed({ categoryEntries }: VideoFeedProps) {
   return (
     <main className="min-h-screen bg-black text-white">
-      <div className="mx-auto max-w-xl px-4 pb-24 pt-6 space-y-6">
-        <header>
-          <h1 className="text-xl font-semibold tracking-tight">
-            Dino Ventures Videos
+      <header className="sticky top-0 z-20 border-b border-zinc-800/60 bg-black/90 backdrop-blur-md">
+        <div className="mx-auto flex h-14 max-w-[1800px] items-center px-4 sm:px-6 lg:px-8">
+          <h1 className="text-xl font-bold tracking-tight">
+            Dino Videos
           </h1>
-          <p className="mt-1 text-xs text-zinc-400">
-            Scrollable feed of videos grouped by category, following the
-            assignment spec.
-          </p>
-        </header>
+        </div>
+      </header>
 
-        <div className="space-y-8">
+      <div className="mx-auto max-w-[1800px] px-4 pb-28 pt-6 sm:px-6 lg:px-8">
+        <div className="space-y-10">
           {categoryEntries.map((entry) => (
             <CategorySection key={entry.category.slug} entry={entry} />
           ))}
@@ -30,4 +28,3 @@ export function VideoFeed({ categoryEntries }: VideoFeedProps) {
     </main>
   );
 }
-
