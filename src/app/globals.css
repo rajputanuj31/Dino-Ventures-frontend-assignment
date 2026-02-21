@@ -24,3 +24,40 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.seek-bar::-webkit-slider-runnable-track {
+  height: 4px;
+  background: transparent;
+}
+.seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  margin-top: -4px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.group:hover .seek-bar::-webkit-slider-thumb,
+.seek-bar:focus::-webkit-slider-thumb {
+  opacity: 1;
+}
+.seek-bar::-moz-range-track {
+  height: 4px;
+  background: transparent;
+}
+.seek-bar::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.group:hover .seek-bar::-moz-range-thumb,
+.seek-bar:focus::-moz-range-thumb {
+  opacity: 1;
+}
