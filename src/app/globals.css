@@ -78,36 +78,20 @@ body {
 .seek-bar::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #fff;
-  margin-top: -5px;
-  opacity: 0;
-  transition: opacity 0.15s;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-}
-.group:hover .seek-bar::-webkit-slider-thumb,
-.seek-bar:focus::-webkit-slider-thumb {
-  opacity: 1;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
 }
 .seek-bar::-moz-range-track {
   height: 4px;
   background: transparent;
 }
 .seek-bar::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #fff;
+  width: 0;
+  height: 0;
+  background: transparent;
   border: none;
-  opacity: 0;
-  transition: opacity 0.15s;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-}
-.group:hover .seek-bar::-moz-range-thumb,
-.seek-bar:focus::-moz-range-thumb {
-  opacity: 1;
 }
 
 /* --- Skip animation overlay --- */
@@ -119,13 +103,22 @@ body {
   animation: skip-fade 0.5s ease-out forwards;
 }
 
-/* --- Mini-player slide-in --- */
+/* --- Mini-player slide-in (legacy bottom bar) --- */
 @keyframes slide-up {
   from { transform: translateY(100%); }
   to { transform: translateY(0); }
 }
 .animate-slide-up {
   animation: slide-up 0.25s ease-out;
+}
+
+/* --- Mini-player floating window scale-in --- */
+@keyframes scale-in-br {
+  from { opacity: 0; transform: scale(0.85) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.animate-scale-in-br {
+  animation: scale-in-br 0.25s ease-out;
 }
 
 /* --- Full player fade-in --- */

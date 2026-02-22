@@ -12,6 +12,7 @@ interface PlayerState {
   isPlaying: boolean;
   currentTime: number;
   duration: number;
+  videoEnded: boolean;
 
   openVideo: (video: Video, category: Category) => void;
   minimize: () => void;
@@ -19,6 +20,7 @@ interface PlayerState {
   close: () => void;
   setPlaying: (isPlaying: boolean) => void;
   setProgress: (currentTime: number, duration: number) => void;
+  setVideoEnded: (ended: boolean) => void;
 }
 
 export const usePlayerStore = create<PlayerState>((set) => ({
@@ -28,6 +30,7 @@ export const usePlayerStore = create<PlayerState>((set) => ({
   isPlaying: false,
   currentTime: 0,
   duration: 0,
+  videoEnded: false,
 
   openVideo: (video, category) =>
     set({
@@ -36,6 +39,7 @@ export const usePlayerStore = create<PlayerState>((set) => ({
       currentCategory: category,
       isPlaying: true,
       currentTime: 0,
+      videoEnded: false,
     }),
 
   minimize: () => set({ mode: "mini" }),
@@ -50,10 +54,13 @@ export const usePlayerStore = create<PlayerState>((set) => ({
       isPlaying: false,
       currentTime: 0,
       duration: 0,
+      videoEnded: false,
     }),
 
   setPlaying: (isPlaying) => set({ isPlaying }),
 
   setProgress: (currentTime, duration) => set({ currentTime, duration }),
+
+  setVideoEnded: (ended) => set({ videoEnded: ended }),
 }));
 
