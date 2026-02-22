@@ -46,6 +46,7 @@ export function usePlayerGestures() {
     borderRadius,
     transition: dragging.current ? "none" : "transform 0.3s ease, opacity 0.3s ease, border-radius 0.3s ease",
     touchAction: "none",
+    willChange: offsetY > 0 ? "transform" : "auto",
   };
 
   return {

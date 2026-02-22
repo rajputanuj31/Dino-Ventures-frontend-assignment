@@ -17,7 +17,7 @@ export function VideoCard({ video, category }: VideoCardProps) {
     <button
       type="button"
       onClick={() => openVideo(video, category)}
-      className="group w-full text-left"
+      className="group w-full cursor-pointer text-left"
     >
       <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-zinc-800">
         <Image

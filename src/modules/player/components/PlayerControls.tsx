@@ -56,7 +56,7 @@ export function PlayerControls({
           <button
             type="button"
             onClick={() => handleSkip(-10)}
-            className="rounded-full p-2.5 text-xs font-semibold text-zinc-300 transition-all hover:bg-zinc-800 active:scale-90"
+            className="cursor-pointer rounded-full p-2.5 text-xs font-semibold text-zinc-300 transition-all hover:bg-zinc-800 active:scale-90"
             aria-label="Skip back 10 seconds"
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -68,7 +68,7 @@ export function PlayerControls({
           <button
             type="button"
             onClick={onTogglePlay}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-black shadow-lg shadow-white/10 transition-transform hover:scale-105 active:scale-95"
+            className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-lg shadow-white/10 transition-transform hover:scale-105 active:scale-95"
             aria-label={isPlaying ? "Pause" : "Play"}
           >
             {isPlaying ? (
@@ -86,7 +86,7 @@ export function PlayerControls({
           <button
             type="button"
             onClick={() => handleSkip(10)}
-            className="rounded-full p-2.5 text-xs font-semibold text-zinc-300 transition-all hover:bg-zinc-800 active:scale-90"
+            className="cursor-pointer rounded-full p-2.5 text-xs font-semibold text-zinc-300 transition-all hover:bg-zinc-800 active:scale-90"
             aria-label="Skip forward 10 seconds"
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

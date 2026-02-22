@@ -25,7 +25,7 @@ export function MiniPlayerBar({
         <button
           type="button"
           onClick={onRestore}
-          className="min-w-0 flex-1 text-left"
+          className="min-w-0 flex-1 cursor-pointer text-left"
           aria-label="Expand player"
         >
           <p className="truncate text-xs font-medium text-white">
@@ -36,7 +36,7 @@ export function MiniPlayerBar({
         <button
           type="button"
           onClick={onTogglePlay}
-          className="shrink-0 rounded-full p-1.5 text-white transition-all hover:bg-zinc-800 active:scale-90"
+          className="cursor-pointer shrink-0 rounded-full p-1.5 text-white transition-all hover:bg-zinc-800 active:scale-90"
           aria-label={isPlaying ? "Pause" : "Play"}
         >
           {isPlaying ? (
@@ -64,7 +64,7 @@ export function MiniPlayerBar({
         <button
           type="button"
           onClick={onClose}
-          className="shrink-0 rounded-full p-1.5 text-zinc-400 transition-all hover:bg-zinc-800 hover:text-white active:scale-90"
+          className="cursor-pointer shrink-0 rounded-full p-1.5 text-zinc-400 transition-all hover:bg-zinc-800 hover:text-white active:scale-90"
           aria-label="Close player"
         >
           <svg

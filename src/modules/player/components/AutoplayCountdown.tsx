@@ -51,7 +51,7 @@ export function AutoplayCountdown({
         <button
           type="button"
           onClick={onCancel}
-          className="rounded-full border border-zinc-600 px-4 py-1.5 text-xs font-medium text-zinc-300 transition-colors hover:border-white hover:text-white active:scale-95"
+          className="cursor-pointer rounded-full border border-zinc-600 px-4 py-1.5 text-xs font-medium text-zinc-300 transition-colors hover:border-white hover:text-white active:scale-95"
         >
           Cancel
         </button>

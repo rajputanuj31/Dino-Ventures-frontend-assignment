@@ -61,7 +61,7 @@ export function PlayerOverlay() {
   const minimize = usePlayerStore((s) => s.minimize);
   const restore = usePlayerStore((s) => s.restore);
 
-  const { gestureHandlers, dragStyle } = usePlayerGestures();
+  const { gestureHandlers, dragStyle, isDragging } = usePlayerGestures();
   const {
     nextVideo,
     countdown,
@@ -277,6 +277,33 @@ export function PlayerOverlay() {
     [showControls],
   );
 
+  useEffect(() => {
+    if (mode === "hidden" || !currentVideo) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.repeat) return;
+      switch (e.key) {
+        case "ArrowLeft":
+          e.preventDefault();
+          handleSkip(-10);
+          break;
+        case "ArrowRight":
+          e.preventDefault();
+          handleSkip(10);
+          break;
+        case " ":
+          e.preventDefault();
+          handleTogglePlay();
+          break;
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [mode, currentVideo, handleSkip, handleTogglePlay]);
+
   if (mode === "hidden" || !currentVideo) return null;
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
@@ -286,7 +313,7 @@ export function PlayerOverlay() {
       className={
         isFull
           ? "animate-fade-in fixed inset-0 z-50 bg-black"
-          : "animate-scale-in-br fixed bottom-4 right-4 z-50 w-80 overflow-hidden rounded-2xl bg-zinc-950 shadow-2xl shadow-black/60 ring-1 ring-white/10"
+          : "animate-scale-in-br fixed bottom-4 left-4 right-4 z-50 w-auto max-w-sm overflow-hidden rounded-2xl bg-zinc-950 shadow-2xl shadow-black/60 ring-1 ring-white/10 sm:left-auto sm:right-4 sm:w-80"
       }
       style={isFull ? dragStyle : undefined}
       onMouseMove={isFull ? () => showControls() : undefined}
@@ -329,6 +356,7 @@ export function PlayerOverlay() {
               duration={duration}
               controlsVisible={controlsVisible}
               gestureHandlers={gestureHandlers}
+              isDragging={isDragging}
               nextVideo={nextVideo}
               countdown={countdown}
               isCountingDown={isCountingDown}
@@ -345,7 +373,7 @@ export function PlayerOverlay() {
           {isMini && (
             <button
               type="button"
-              className="absolute inset-0 z-10"
+              className="absolute inset-0 z-10 cursor-pointer"
               onClick={restore}
               aria-label="Expand player"
             />

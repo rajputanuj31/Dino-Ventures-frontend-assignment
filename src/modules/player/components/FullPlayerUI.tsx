@@ -12,6 +12,7 @@ interface FullPlayerUIProps {
   duration: number;
   controlsVisible: boolean;
   gestureHandlers: Record<string, React.PointerEventHandler>;
+  isDragging: boolean;
   nextVideo: Video | null;
   countdown: number;
   isCountingDown: boolean;
@@ -30,6 +31,7 @@ export function FullPlayerUI({
   duration,
   controlsVisible,
   gestureHandlers,
+  isDragging,
   nextVideo,
   countdown,
   isCountingDown,
@@ -44,7 +46,7 @@ export function FullPlayerUI({
     <>
       {/* Tap overlay for play/pause + drag gesture */}
       <div
-        className="absolute inset-0 z-10"
+        className={`absolute inset-0 z-10 ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
         style={{ touchAction: "none" }}
         onClick={onTogglePlay}
         {...gestureHandlers}
@@ -67,7 +69,7 @@ export function FullPlayerUI({
           <button
             type="button"
             onClick={onMinimize}
-            className="shrink-0 rounded-full p-2 text-white transition-colors hover:bg-white/10"
+            className="cursor-pointer shrink-0 rounded-full p-2 text-white transition-colors hover:bg-white/10"
             aria-label="Minimize player"
           >
             <svg
@@ -89,7 +91,7 @@ export function FullPlayerUI({
           <button
             type="button"
             onClick={onClose}
-            className="shrink-0 rounded-full p-2 text-white transition-colors hover:bg-white/10"
+            className="cursor-pointer shrink-0 rounded-full p-2 text-white transition-colors hover:bg-white/10"
             aria-label="Close player"
           >
             <svg
